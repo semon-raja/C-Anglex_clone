@@ -61,10 +61,10 @@ $(document).ready(function () {
     nav: true,
     navText: ["<span></span>", "<span></span>"],
     dots: false,
-    margin: 14,
+    margin: 12,
     responsive: {
-      0: { items: 1 },
-      640: { items: 2 },
+      0: { items: 2 },
+      768: { items: 2 },
       1024: { items: 3 },
     },
   });
@@ -83,7 +83,7 @@ $(document).ready(function () {
     dots: false,
     margin: 14,
     responsive: {
-      0: { items: 1 },
+      0: { items: 2 },
       640: { items: 2 },
       1024: { items: 3 },
     },
@@ -115,60 +115,48 @@ $(document).ready(function () {
 // ==========================
 // Featured 2x2 Carousel
 // ==========================
-document.addEventListener("DOMContentLoaded", function () {
-  const carousel = document.querySelector("#featuredCarousel");
-  if (!carousel) return;
+$(document).ready(function () {
+  const products = $("#featuredCarousel .featured-product");
+  const itemsPerPage = 4;
+  let currentPage = 0;
+  const totalPages = Math.ceil(products.length / itemsPerPage);
 
-  const products = Array.from(carousel.querySelectorAll(".featured-product"));
-  const prev = carousel.querySelector(".featured-nav--prev");
-  const next = carousel.querySelector(".featured-nav--next");
-  const visibleCount = 4;
-  let current = 0;
-
-  // Prevent anchor href="#" from jumping page to top
-  products.forEach(function (product) {
-    product.addEventListener("click", function (e) {
-      e.preventDefault();
-    });
-  });
-
-  function renderFeatured() {
-    products.forEach((product) => {
-      product.classList.remove("is-visible");
-      product.style.order = "";
-    });
-    for (let offset = 0; offset < visibleCount; offset += 1) {
-      const index = (current + offset) % products.length;
-      products[index].classList.add("is-visible");
-      products[index].style.order = String(offset);
-    }
+  function showPage(page) {
+      products.removeClass("is-visible");
+      const start = page * itemsPerPage;
+      const end = start + itemsPerPage;
+      products.slice(start, end).addClass("is-visible");
   }
 
-  prev?.addEventListener("click", function () {
-    current = (current - 1 + products.length) % products.length;
-    renderFeatured();
+  if (products.length > 0) {
+      showPage(currentPage);
+  }
+
+  $("#featuredCarousel .featured-nav--prev").click(function(e) {
+      e.preventDefault();
+      currentPage = (currentPage - 1 + totalPages) % totalPages;
+      showPage(currentPage);
   });
 
-  next?.addEventListener("click", function () {
-    current = (current + 1) % products.length;
-    renderFeatured();
+  $("#featuredCarousel .featured-nav--next").click(function(e) {
+      e.preventDefault();
+      currentPage = (currentPage + 1) % totalPages;
+      showPage(currentPage);
   });
-
-  renderFeatured();
 });
 
 // ==========================
 // Scroll To Top Button
 // ==========================
 document.addEventListener("DOMContentLoaded", function () {
-    const btn = document.getElementById("scrollTopBtn");
-    if (!btn) return;
-    window.addEventListener("scroll", function () {
-        btn.classList.toggle("visible", window.scrollY > 400);
-    });
-    btn.addEventListener("click", function () {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+  const btn = document.getElementById("scrollTopBtn");
+  if (!btn) return;
+  window.addEventListener("scroll", function () {
+    btn.classList.toggle("visible", window.scrollY > 400);
+  });
+  btn.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 });
 
 // ==========================

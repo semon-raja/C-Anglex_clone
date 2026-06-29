@@ -2061,7 +2061,12 @@ body {
     }
 
     .tp-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .tp-banner__img--left,
+    .tp-banner__img--right {
+        display: none;
     }
 }
 
@@ -2479,7 +2484,7 @@ body {
 
 @media (max-width: 1100px) {
     .featured-layout {
-        flex-direction: column;
+        flex-direction: column-reverse;
         height: auto;
     }
     .featured-box {
@@ -2497,7 +2502,7 @@ body {
 
 @media (max-width: 640px) {
     .featured-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 }
 
@@ -2508,7 +2513,7 @@ body {
     }
     .featured-product__img-wrap {
         width: 100%;
-        height: 140px;
+        height: 160px;
     }
     .featured-product__name {
         font-size: 12.5px;
@@ -2698,12 +2703,39 @@ body {
 
 @media (max-width: 600px) {
     .popular-categories__grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .pop-cat-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px;
+        background: #fff;
     }
 
     .pop-cat-card__img-wrap {
-        width: 72px;
-        height: 72px;
+        width: 100%;
+        height: 120px;
+    }
+
+    .pop-cat-card__name {
+        font-size: 13px;
+        margin-bottom: 2px;
+    }
+
+    .pop-cat-card__list li {
+        font-size: 11px;
+    }
+    
+    .pop-cat-card__link {
+        font-size: 12px;
+    }
+
+    /* ---- Social Commerce cards: adjust height on mobile ---- */
+    .sc-card {
+        height: 420px;
+        min-height: 420px;
     }
 }
 
@@ -3178,21 +3210,54 @@ body {
 @media (max-width: 768px) {
     .footer-main__inner {
         grid-template-columns: 1fr 1fr;
+        padding-bottom: 50px;
+        position: relative;
     }
+
     .footer-brand {
         grid-column: 1 / -1;
     }
-}
 
-@media (max-width: 480px) {
-    .footer-main__inner {
-        grid-template-columns: 1fr;
+    .footer-col--right {
+        grid-column: auto;
+        flex-direction: column;
+        gap: 16px;
     }
+
+    .footer-social__btn {
+        background: #fff;
+        color: #548ed4;
+        border: none;
+    }
+
+    .footer-partners {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .footer-partners__label {
+        font-size: 15px;
+        font-weight: 800;
+        margin-right: 4px;
+    }
+
+    .footer-col--right .footer-col__heading {
+        margin-bottom: 0;
+    }
+
     .footer-bottom__inner {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        text-align: center;
+        gap: 12px;
     }
-}   
+}
+
 /* ==========================
    MOBILE RESPONSIVE SHELL
    Header + main nav are replaced by a fixed
