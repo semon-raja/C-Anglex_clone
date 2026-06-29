@@ -352,12 +352,12 @@ body {
    HERO SECTION
 ========================== */
 .hero-section {
-    padding: 10px 0 20px;
+    padding: 12px 0 20px;
 }
 
 .hero-container {
     display: flex;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 14px;
 }
 
@@ -376,6 +376,7 @@ body {
     z-index: 50;
     /* Height = banner height exactly, sidebar scrolls inside */
     height: 545px;
+    align-self: flex-start;
 }
 
 /* All 17 items fit exactly within the sidebar height, so no scrolling is
@@ -600,12 +601,12 @@ body {
 
 .banner-person {
     position: absolute;
-    right: 60px;
+    right: 40px;
     bottom: 0;
-    height: 96%;
-    max-width: 46%;
+    height: 100%;
+    max-width: 50%;
     object-fit: contain;
-    object-position: bottom;
+    object-position: bottom center;
     opacity: 0;
     transition:
         opacity 0.8s ease,
@@ -627,15 +628,16 @@ body {
 .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 560px;
-    padding-left: 50px;
+    max-width: 480px;
+    padding-left: 46px;
+    padding-top: 20px;
 }
 
 .hero-heading {
-    font-size: 38px;
+    font-size: 42px;
     font-weight: 700;
-    line-height: 1.3;
-    margin-bottom: 18px;
+    line-height: 1.25;
+    margin-bottom: 14px;
 }
 
 .hero-heading .line {
@@ -650,25 +652,24 @@ body {
 .hero-subtext {
     color: #fff;
     font-weight: 700;
-    font-size: 22px;
-    margin-bottom: 26px;
+    font-size: 20px;
+    margin-bottom: 22px;
 }
 
 .hero-buttons {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-bottom: 18px;
+    gap: 10px;
+    margin-bottom: 16px;
 }
 
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
-    gap: 18px;
-    width: fit-content;
-    min-width: 200px;
-    padding: 6px 6px 6px 22px;
+    gap: 12px;
+    width: 220px;
+    padding: 7px 7px 7px 22px;
     border-radius: 30px;
     color: #fff;
     font-weight: 700;
@@ -689,14 +690,15 @@ body {
 }
 
 .btn-icon {
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 1.5px solid rgba(255, 255, 255, 0.5);
     border-radius: 50%;
     font-size: 14px;
+    flex-shrink: 0;
 }
 
 .water-btn{
@@ -706,8 +708,8 @@ body {
     background: #1455C2;
     border-radius: 30px;
 
-    padding: 6px 6px 6px 22px;   /* Same as your .btn */
-    min-width: 200px;
+    padding: 7px 7px 7px 22px;   /* Same as your .btn */
+    width: 220px;
 
     color: #fff;
 }
@@ -1863,12 +1865,25 @@ body {
 ========================== */
 @media (max-width: 1024px) {
     .sidebar {
-        width: 220px;
-        height: 570px;
+        width: 200px;
+        height: 520px;
+    }
+
+    .hero-banner {
+        height: 520px;
     }
 
     .hero-heading {
-        font-size: 30px;
+        font-size: 32px;
+    }
+
+    .hero-subtext {
+        font-size: 17px;
+    }
+
+    .btn, .water-btn {
+        width: 195px;
+        font-size: 14px;
     }
 
     .mega-sub {
@@ -1893,6 +1908,38 @@ body {
         display: none;
     }
 
+    .hero-banner {
+        height: 380px;
+        border-radius: 18px;
+    }
+
+    .hero-content {
+        padding-left: 24px;
+        padding-top: 24px;
+        max-width: 65%;
+    }
+
+    .hero-heading {
+        font-size: 26px;
+        margin-bottom: 10px;
+    }
+
+    .hero-subtext {
+        font-size: 15px;
+        margin-bottom: 16px;
+    }
+
+    .btn, .water-btn {
+        width: 180px;
+        font-size: 13px;
+        padding: 6px 6px 6px 16px;
+    }
+
+    .banner-person {
+        right: 10px;
+        max-width: 42%;
+    }
+
     .search-section {
         width: 280px;
     }
@@ -1908,6 +1955,50 @@ body {
     .product-card--featured {
         width: 100%;
         min-height: 220px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-banner {
+        height: 300px;
+        border-radius: 14px;
+    }
+
+    .hero-content {
+        padding-left: 18px;
+        padding-top: 18px;
+        max-width: 70%;
+    }
+
+    .hero-heading {
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+
+    .hero-subtext {
+        font-size: 13px;
+        margin-bottom: 12px;
+    }
+
+    .btn, .water-btn {
+        width: 155px;
+        font-size: 12px;
+        padding: 5px 5px 5px 14px;
+    }
+
+    .btn-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .banner-person {
+        right: 0;
+        max-width: 40%;
+    }
+
+    .hero-link {
+        font-size: 13px;
     }
 }
 
